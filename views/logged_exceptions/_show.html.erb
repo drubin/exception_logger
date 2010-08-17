@@ -8,11 +8,23 @@
 </div>
 <h1><%= exception.name %></h1>
 <h2>Request</h2>
-<%= textilize(exception.request) %>
+<% begin %>
+  <%= textilize(exception.request) %>
+<% rescue %>
+ <%= simple_format(exception.request)%>
+<% end %>
 <h2>Backtrace</h2>
-<%= simple_format exception.message %>
+<%  begin %>
+  <%= textilize(exception.message) %>
+<% rescue %>
+ <%= simple_format(exception.message)%>
+<% end %>
 <div id="backtrace">
-  <%= exception.backtrace.gsub(/\n/,"<br />") %>
+  <%= exception.backtrace.gsub(/\n/,"<br/>") %>
 </div>
 <h2>Environment</h2>
-<%= textilize(exception.environment) %>
+<%   begin %>
+  <%= textilize( exception.environment) %>
+<% rescue %>
+ <%= simple_format( exception.environment)%>
+<% end %>

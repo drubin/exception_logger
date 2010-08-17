@@ -7,6 +7,8 @@ First you need to generate the migration:
 
   ./script/generate exception_migration
 
+If you have the redcloth gem installed it will make use of textilize else it will fall back to simple_format
+
 Next, you'll need to include the ExceptionLoggable module into ApplicationController.  Once that's done you might want to modify key methods to customize the logging:
 
   render_404(exception) - Shows the 404 template.
@@ -103,5 +105,6 @@ UPDATES
 Chris Wanstrath - use will_paginate
 Henrik Nyh (DanceJam) - log exceptions in dev, linkable exceptions, parameter filtering etc
 Zhurbiy Oleg (Ol.keene) - exception notify by email, exceptions catching from rake tasks, will_paginate fix
-David Rubin - Merged in different peoples branches. Fixed minor bugs and cleaned up the code.
+David Rubin - Merged in different peoples branches. Fixed minor bugs and cleaned up the code. 
+	- Removed complete dependancy on redcloth for textformatting. If it is there it will use it.
 Jason Knight - Pagination support, built on/inspired by Ryanb's willpaginate support.
